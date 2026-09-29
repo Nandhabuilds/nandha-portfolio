@@ -11,9 +11,7 @@ npm run dev
 ## Things to set before publishing
 1. **Photo:** put your photo at `src/assets/Portfolio/picture.png` (or .jpg/.webp). Until then a monogram is shown.
 2. **LinkedIn:** replace `nandhakumar-s-818aa6269` in `src/components/Footer.jsx`.
-3. **Contact form:** create a form at formspree.io, copy `.env.example` to `.env`, and set `VITE_FORMSPREE_ID`.
-   For GitHub Pages builds, add it as a repository variable/secret used by your workflow.
-
+3. **Contact form:** posts to your Cloudflare Worker's `/contact` route, which emails you through Resend (see `worker-index.js` in the download).
 4. **AI assistant (Elina):** already points at your Worker. Override with `VITE_ASSISTANT_URL` only if the URL changes. Voice replies use ElevenLabs via `/speak`: set `speakByDefault: false` in `src/config/assistant.js` to save quota.
 
 ## Where content lives

@@ -324,6 +324,7 @@ const Hero = () => {
           <a href="#expertise" className="hover:text-red-500 transition-colors">Expertise</a>
           <a href="#skills" className="hover:text-red-500 transition-colors">Skills</a>
           <a href="#projects" className="hover:text-red-500 transition-colors">Projects</a>
+          <a href="#certificates" className="hover:text-red-500 transition-colors">Certificates</a>
           <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
         </nav>
         <a

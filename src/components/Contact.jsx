@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { ASSISTANT } from '../config/assistant';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -39,23 +40,25 @@ const Contact = () => {
       return;
     }
 
-    const formId = import.meta.env.VITE_FORMSPREE_ID;
-    if (!formId) {
-      alert("The contact form is not connected yet. See the README to set VITE_FORMSPREE_ID.");
-      return;
-    }
-
     try {
-      const res = await fetch(`https://formspree.io/f/${formId}`, {
+      const res = await fetch(`${ASSISTANT.workerUrl}/contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(formData)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          message: formData.message
+        })
       });
-      if (!res.ok) throw new Error('Request failed');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Request failed');
       alert(`Thanks ${formData.firstName}! Your message was sent.`);
       setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
-    } catch {
-      alert("Something went wrong. Please try again or reach out on LinkedIn.");
+    } catch (err) {
+      alert(err.message && err.message !== 'Request failed'
+        ? err.message
+        : "Something went wrong. Please try again or reach out on LinkedIn.");
     }
   };
 

@@ -6,6 +6,7 @@ import About from './components/About';
 import Expertise from './components/Expertise';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AIAssistant from './components/AIAssistant';
@@ -27,6 +28,7 @@ function App() {
       <Expertise />
       <Skills />
       <Projects />
+      <Certificates />
       <Contact />
       <Footer />
 
