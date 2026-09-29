@@ -1,0 +1,10 @@
+/* global process */
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// VITE_BASE is set by the GitHub Pages workflow ('/' for username.github.io, '/repo-name/' otherwise)
+export default defineConfig({
+  base: process.env.VITE_BASE || '/',
+  plugins: [react(), tailwindcss()],
+})
